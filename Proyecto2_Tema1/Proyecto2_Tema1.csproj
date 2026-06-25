@@ -47,6 +47,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Categoria.cs" />
+    <Compile Include="FormEquipos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEquipos.Designer.cs">
+      <DependentUpon>FormEquipos.cs</DependentUpon>
+    </Compile>
     <Compile Include="GestorLiga.cs" />
     <Compile Include="Partido.cs" />
     <Compile Include="Equipo.cs" />
@@ -59,6 +65,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormEquipos.resx">
+      <DependentUpon>FormEquipos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPrincipal.resx">
+      <DependentUpon>FormPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

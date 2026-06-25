@@ -15,6 +15,55 @@ namespace Proyecto2_Tema1
         public FormPrincipal()
         {
             InitializeComponent();
+            GestorLiga.CargarDatosPrueba();
+        }
+
+        private void btnEquipos_Click(object sender, EventArgs e)
+        {
+            FormEquipos formEquipos = new FormEquipos();
+            formEquipos.ShowDialog();
+        }
+
+        private void btnJugadores_Click(object sender, EventArgs e)
+        {
+            // implementacion próximamente
+            //FormJugadores formJugadores = new FormJugadores();
+            //formJugadores.ShowDialog();
+        }
+
+        private void btnPartidos_Click(object sender, EventArgs e)
+        {
+            // implementacion próximamente
+            //FormPartidos formPartidos = new FormPartidos();
+            //formPartidos.ShowDialog();
+        }
+
+        private void btnHistorial_Click(object sender, EventArgs e)
+        {
+            // implementacion próximamente
+            //FormHistorial formHistorial = new FormHistorial();
+            //formHistorial.ShowDialog();
+        }
+
+        private void btnTabla_Click(object sender, EventArgs e)
+        {
+            // implementacion próximamente
+            //FormTablaPosiciones formTabla = new FormTablaPosiciones();
+            //formTabla.ShowDialog();
+        }
+
+        private void btnReporte_Click(object sender, EventArgs e)
+        {
+            // SaveFileDialog permite al usuario elegir dónde guardar el archivo de reporte.
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Archivos de texto|*.txt";
+            sfd.FileName = "ReporteLiga.txt";
+
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                GestorLiga.GenerarReporte(sfd.FileName);
+                MessageBox.Show("Reporte generado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }
