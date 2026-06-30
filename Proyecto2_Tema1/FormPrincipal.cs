@@ -32,9 +32,8 @@ namespace Proyecto2_Tema1
 
         private void btnPartidos_Click(object sender, EventArgs e)
         {
-            // implementacion próximamente
-            //FormPartidos formPartidos = new FormPartidos();
-            //formPartidos.ShowDialog();
+            FormPartidos formpartidos = new FormPartidos();
+            formpartidos.ShowDialog();
         }
 
         private void btnHistorial_Click(object sender, EventArgs e)
