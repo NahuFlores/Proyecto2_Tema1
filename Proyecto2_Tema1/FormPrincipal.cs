@@ -26,9 +26,8 @@ namespace Proyecto2_Tema1
 
         private void btnJugadores_Click(object sender, EventArgs e)
         {
-            // implementacion próximamente
-            //FormJugadores formJugadores = new FormJugadores();
-            //formJugadores.ShowDialog();
+            FormJugadores formJugadores = new FormJugadores();
+            formJugadores.ShowDialog();
         }
 
         private void btnPartidos_Click(object sender, EventArgs e)

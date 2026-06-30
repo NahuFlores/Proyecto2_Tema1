@@ -47,6 +47,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Categoria.cs" />
+    <Compile Include="FormJugadores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormJugadores.Designer.cs">
+      <DependentUpon>FormJugadores.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormEquipos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,6 +73,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormEquipos.resx">
       <DependentUpon>FormEquipos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormJugadores.resx">
+      <DependentUpon>FormJugadores.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormPrincipal.resx">
       <DependentUpon>FormPrincipal.cs</DependentUpon>
