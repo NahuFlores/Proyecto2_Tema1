@@ -38,9 +38,8 @@ namespace Proyecto2_Tema1
 
         private void btnHistorial_Click(object sender, EventArgs e)
         {
-            // implementacion próximamente
-            //FormHistorial formHistorial = new FormHistorial();
-            //formHistorial.ShowDialog();
+            FormHistorial formHistorial = new FormHistorial();
+            formHistorial.ShowDialog();
         }
 
         private void btnTabla_Click(object sender, EventArgs e)
