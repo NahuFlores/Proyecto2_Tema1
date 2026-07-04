@@ -71,6 +71,9 @@
     <Compile Include="FormEquipos.Designer.cs">
       <DependentUpon>FormEquipos.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormTablaPosiciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="GestorLiga.cs" />
     <Compile Include="Partido.cs" />
     <Compile Include="Equipo.cs" />

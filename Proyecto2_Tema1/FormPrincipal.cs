@@ -44,9 +44,8 @@ namespace Proyecto2_Tema1
 
         private void btnTabla_Click(object sender, EventArgs e)
         {
-            // implementacion próximamente
-            //FormTablaPosiciones formTabla = new FormTablaPosiciones();
-            //formTabla.ShowDialog();
+            FormTablaPosiciones formTabla = new FormTablaPosiciones();
+            formTabla.ShowDialog();
         }
 
         private void btnReporte_Click(object sender, EventArgs e)
@@ -61,6 +60,11 @@ namespace Proyecto2_Tema1
                 GestorLiga.GenerarReporte(sfd.FileName);
                 MessageBox.Show("Reporte generado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

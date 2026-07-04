@@ -159,24 +159,36 @@ namespace Proyecto2_Tema1
             DateTime fecha = dtpFecha.Value;
 
             Partido partido = GestorLiga.AltaPartido(local, visitante, fecha, horario, lugar);
-            partido.GolesLocal = golesLocal;
-            partido.GolesVisitante = golesVisitante;
+            if (partido == null)
+            {
+                MessageBox.Show("No se pudo crear el partido. Verifique categorías de los equipos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
-            // Agregar titulares local
-            foreach (Jugador j in clbTitularesLocal.CheckedItems)
-                partido.TitularesLocal.Add(j);
+            // Construir listas de jugadores seleccionados
+            List<Jugador> titularesLocal = new List<Jugador>();
+            List<Jugador> suplentesLocal = new List<Jugador>();
+            List<Jugador> titularesVisitante = new List<Jugador>();
+            List<Jugador> suplentesVisitante = new List<Jugador>();
 
-            // Agregar suplentes local
-            foreach (Jugador j in clbSuplentesLocal.CheckedItems)
-                partido.SuplentesLocal.Add(j);
+            foreach (Jugador j in clbTitularesLocal.CheckedItems) titularesLocal.Add(j);
+            foreach (Jugador j in clbSuplentesLocal.CheckedItems) suplentesLocal.Add(j);
+            foreach (Jugador j in clbTitularesVisitante.CheckedItems) titularesVisitante.Add(j);
+            foreach (Jugador j in clbSuplentesVisitante.CheckedItems) suplentesVisitante.Add(j);
 
-            // Agregar titulares visitante
-            foreach (Jugador j in clbTitularesVisitante.CheckedItems)
-                partido.TitularesVisitante.Add(j);
+            bool okAlineacion = GestorLiga.ConfigurarAlineacion(partido.Id, titularesLocal, suplentesLocal, titularesVisitante, suplentesVisitante);
+            if (!okAlineacion)
+            {
+                MessageBox.Show("Alineación inválida. Verifique titulares/suplentes y pertenencia a los equipos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
-            // Agregar suplentes visitante
-            foreach (Jugador j in clbSuplentesVisitante.CheckedItems)
-                partido.SuplentesVisitante.Add(j);
+            bool okResultado = GestorLiga.RegistrarResultado(partido.Id, golesLocal, golesVisitante);
+            if (!okResultado)
+            {
+                MessageBox.Show("No se pudo registrar el resultado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             MessageBox.Show("Partido registrado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
