@@ -107,37 +107,47 @@ namespace Proyecto2_Tema1
 
             if (local == visitante)
             {
-                MessageBox.Show("Los equipos no pueden ser el mismo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Los equipos no pueden ser el mismo (esto no es el PES).", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            // Validar exactamente 5 titulares por equipo
-            if (clbTitularesLocal.CheckedItems.Count != 5)
+            // Validar exactamente 5 titulares por equipo.
+            // Algunos usuarios hacen click para seleccionar en lugar de marcar los checks del CheckedListBox.
+            // Para mejorar la usabilidad, consideramos tanto CheckedItems como SelectedItems: si hay checks los usamos,
+            // en caso contrario tomamos los elementos seleccionados.
+            int titularesLocalCount = clbTitularesLocal.CheckedItems.Count > 0 ? clbTitularesLocal.CheckedItems.Count : clbTitularesLocal.SelectedItems.Count;
+            int titularesVisitanteCount = clbTitularesVisitante.CheckedItems.Count > 0 ? clbTitularesVisitante.CheckedItems.Count : clbTitularesVisitante.SelectedItems.Count;
+
+            if (titularesLocalCount != 5)
             {
                 MessageBox.Show("Debe seleccionar exactamente 5 titulares para el equipo local.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            if (clbTitularesVisitante.CheckedItems.Count != 5)
+            if (titularesVisitanteCount != 5)
             {
                 MessageBox.Show("Debe seleccionar exactamente 5 titulares para el equipo visitante.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             // Validar máximo 3 suplentes por equipo
-            if (clbSuplentesLocal.CheckedItems.Count > 3)
+            // Para suplentes aplicamos la misma lógica: preferimos CheckedItems pero aceptamos SelectedItems si no hay checks.
+            int suplentesLocalCount = clbSuplentesLocal.CheckedItems.Count > 0 ? clbSuplentesLocal.CheckedItems.Count : clbSuplentesLocal.SelectedItems.Count;
+            int suplentesVisitanteCount = clbSuplentesVisitante.CheckedItems.Count > 0 ? clbSuplentesVisitante.CheckedItems.Count : clbSuplentesVisitante.SelectedItems.Count;
+
+            if (suplentesLocalCount > 3)
             {
                 MessageBox.Show("El equipo local no puede tener más de 3 suplentes.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            if (clbSuplentesVisitante.CheckedItems.Count > 3)
+            if (suplentesVisitanteCount > 3)
             {
                 MessageBox.Show("El equipo visitante no puede tener más de 3 suplentes.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            string horario = txtHorario.Text.Trim();
+            string horario = dtpHorario.Value.ToString("HH:mm");
             string lugar = txtLugar.Text.Trim();
 
             if (horario == "" || lugar == "")
@@ -161,7 +171,7 @@ namespace Proyecto2_Tema1
             Partido partido = GestorLiga.AltaPartido(local, visitante, fecha, horario, lugar);
             if (partido == null)
             {
-                MessageBox.Show("No se pudo crear el partido. Verifique categorías de los equipos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("No se pudo crear el partido. Verifique las categorías seleccionadas.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -171,15 +181,47 @@ namespace Proyecto2_Tema1
             List<Jugador> titularesVisitante = new List<Jugador>();
             List<Jugador> suplentesVisitante = new List<Jugador>();
 
-            foreach (Jugador j in clbTitularesLocal.CheckedItems) titularesLocal.Add(j);
-            foreach (Jugador j in clbSuplentesLocal.CheckedItems) suplentesLocal.Add(j);
-            foreach (Jugador j in clbTitularesVisitante.CheckedItems) titularesVisitante.Add(j);
-            foreach (Jugador j in clbSuplentesVisitante.CheckedItems) suplentesVisitante.Add(j);
+            // Construir listas usando CheckedItems si hay checks, o SelectedItems en caso contrario.
+            if (clbTitularesLocal.CheckedItems.Count > 0)
+            {
+                foreach (Jugador j in clbTitularesLocal.CheckedItems) titularesLocal.Add(j);
+            }
+            else
+            {
+                foreach (Jugador j in clbTitularesLocal.SelectedItems) titularesLocal.Add(j);
+            }
+
+            if (clbSuplentesLocal.CheckedItems.Count > 0)
+            {
+                foreach (Jugador j in clbSuplentesLocal.CheckedItems) suplentesLocal.Add(j);
+            }
+            else
+            {
+                foreach (Jugador j in clbSuplentesLocal.SelectedItems) suplentesLocal.Add(j);
+            }
+
+            if (clbTitularesVisitante.CheckedItems.Count > 0)
+            {
+                foreach (Jugador j in clbTitularesVisitante.CheckedItems) titularesVisitante.Add(j);
+            }
+            else
+            {
+                foreach (Jugador j in clbTitularesVisitante.SelectedItems) titularesVisitante.Add(j);
+            }
+
+            if (clbSuplentesVisitante.CheckedItems.Count > 0)
+            {
+                foreach (Jugador j in clbSuplentesVisitante.CheckedItems) suplentesVisitante.Add(j);
+            }
+            else
+            {
+                foreach (Jugador j in clbSuplentesVisitante.SelectedItems) suplentesVisitante.Add(j);
+            }
 
             bool okAlineacion = GestorLiga.ConfigurarAlineacion(partido.Id, titularesLocal, suplentesLocal, titularesVisitante, suplentesVisitante);
             if (!okAlineacion)
             {
-                MessageBox.Show("Alineación inválida. Verifique titulares/suplentes y pertenencia a los equipos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Alineación inválida. Verifique titulares/suplentes (que no se repitan) y pertenencia a los equipos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -194,5 +236,9 @@ namespace Proyecto2_Tema1
             this.Close();
         }
 
+        private void dtpHorario_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

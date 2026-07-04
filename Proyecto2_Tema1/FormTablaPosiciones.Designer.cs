@@ -7,14 +7,14 @@ namespace Proyecto2_Tema1
     partial class FormTablaPosiciones
     {
         /// <summary>
-        /// Designer variables
+        /// Variables del diseñador
         /// </summary>
         private System.ComponentModel.IContainer components = null;
         private DataGridView dgv;
         private ComboBox cmbCategoria;
 
         /// <summary>
-        /// Initialize designer controls so they are editable in Visual Studio.
+        /// Inicializa los controles del diseñador para que puedan editarse en Visual Studio.
         /// </summary>
         private void InitializeComponent()
         {
@@ -74,9 +74,9 @@ namespace Proyecto2_Tema1
         }
 
         /// <summary>
-        /// Dispose
+        /// Libera los recursos utilizados por el formulario.
         /// </summary>
-        /// <param name="disposing"></param>
+        /// <param name="disposing">True si se deben liberar recursos administrados; false en caso contrario.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))

@@ -46,7 +46,7 @@
             this.lblFecha = new System.Windows.Forms.Label();
             this.dtpFecha = new System.Windows.Forms.DateTimePicker();
             this.lblHorario = new System.Windows.Forms.Label();
-            this.txtHorario = new System.Windows.Forms.TextBox();
+            this.dtpHorario = new System.Windows.Forms.DateTimePicker();
             this.lblLugar = new System.Windows.Forms.Label();
             this.txtLugar = new System.Windows.Forms.TextBox();
             this.lblGolesLocal = new System.Windows.Forms.Label();
@@ -203,12 +203,15 @@
             this.lblHorario.TabIndex = 16;
             this.lblHorario.Text = "Horario:";
             // 
-            // txtHorario
+            // dtpHorario
             // 
-            this.txtHorario.Location = new System.Drawing.Point(382, 437);
-            this.txtHorario.Name = "txtHorario";
-            this.txtHorario.Size = new System.Drawing.Size(100, 20);
-            this.txtHorario.TabIndex = 17;
+            this.dtpHorario.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dtpHorario.Location = new System.Drawing.Point(382, 437);
+            this.dtpHorario.Name = "dtpHorario";
+            this.dtpHorario.ShowUpDown = true;
+            this.dtpHorario.Size = new System.Drawing.Size(100, 20);
+            this.dtpHorario.TabIndex = 17;
+            this.dtpHorario.ValueChanged += new System.EventHandler(this.dtpHorario_ValueChanged);
             // 
             // lblLugar
             // 
@@ -281,7 +284,7 @@
             this.Controls.Add(this.lblGolesLocal);
             this.Controls.Add(this.txtLugar);
             this.Controls.Add(this.lblLugar);
-            this.Controls.Add(this.txtHorario);
+            this.Controls.Add(this.dtpHorario);
             this.Controls.Add(this.lblHorario);
             this.Controls.Add(this.dtpFecha);
             this.Controls.Add(this.lblFecha);
@@ -326,7 +329,7 @@
         private System.Windows.Forms.Label lblFecha;
         private System.Windows.Forms.DateTimePicker dtpFecha;
         private System.Windows.Forms.Label lblHorario;
-        private System.Windows.Forms.TextBox txtHorario;
+        private System.Windows.Forms.DateTimePicker dtpHorario;
         private System.Windows.Forms.Label lblLugar;
         private System.Windows.Forms.TextBox txtLugar;
         private System.Windows.Forms.Label lblGolesLocal;

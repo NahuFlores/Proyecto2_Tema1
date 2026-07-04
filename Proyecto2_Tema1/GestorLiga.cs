@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace Proyecto2_Tema1
 {
-    // Clase estática que centraliza toda la lógica de negocio del sistema.
-    // Al ser estática no necesita instanciarse y actúa como gestor global.
+    // Clase estática que centraliza toda la lógica
     public static class GestorLiga
     {
         public static List<Equipo> Equipos { get; private set; } = new List<Equipo>();
@@ -432,27 +431,20 @@ namespace Proyecto2_Tema1
         {
             using (StreamWriter sw = new StreamWriter(rutaArchivo))
             {
-                sw.WriteLine("=== EQUIPOS REGISTRADOS ===");
-                foreach (Equipo e in Equipos)
-                    sw.WriteLine(e.Nombre + " | Club: " + e.NombreClub + " | Categoría: " + e.Categoria);
+                // DATOS DESTACADOS: queriamos mantener estos datos implementados en el proyecto 1
+                sw.WriteLine("\n=== DATOS DESTACADOS ===");
+                Equipo masVictoriasInicio = ObtenerEquipoConMasVictorias();
+                if (masVictoriasInicio != null)
+                    sw.WriteLine(masVictoriasInicio.Nombre + " fue el equipo con más victorias (" + ObtenerVictorias(masVictoriasInicio) + " victorias).");
+                Equipo masDerrotasInicio = ObtenerEquipoConMasDerrotas();
+                if (masDerrotasInicio != null)
+                    sw.WriteLine(masDerrotasInicio.Nombre + " fue el equipo con más derrotas (" + ObtenerDerrotas(masDerrotasInicio) + " derrotas).");
 
-                sw.WriteLine("\n=== JUGADORES REGISTRADOS ===");
-                foreach (Jugador j in Jugadores)
-                    sw.WriteLine(j.Apellido + ", " + j.Nombre + " | DNI: " + j.DNI + " | Edad: " + j.Edad);
+                // Tabla general (todas las categorías) ordenada por puntos, diferencia de goles y goles a favor
+                sw.WriteLine("\n=== TABLA GENERAL ===");
+                sw.WriteLine("Equipo | Categoría | PJ | PG | PE | PP | Pts | GF | GC | DG");
 
-                sw.WriteLine("\n=== HISTORIAL DE PARTIDOS ===");
-                foreach (Partido p in Partidos)
-                {
-                    sw.WriteLine(p.EquipoLocal.Nombre + " " + p.GolesLocal + " - " + p.GolesVisitante + " " + p.EquipoVisitante.Nombre + " | " + p.Fecha.ToShortDateString());
-                    // Formaciones
-                    sw.WriteLine("  Titulares " + p.EquipoLocal.Nombre + ": " + string.Join(", ", p.TitularesLocal.Select(t => t.Apellido + " " + t.Nombre)));
-                    sw.WriteLine("  Suplentes " + p.EquipoLocal.Nombre + ": " + (p.SuplentesLocal.Count > 0 ? string.Join(", ", p.SuplentesLocal.Select(s => s.Apellido + " " + s.Nombre)) : "-") );
-                    sw.WriteLine("  Titulares " + p.EquipoVisitante.Nombre + ": " + string.Join(", ", p.TitularesVisitante.Select(t => t.Apellido + " " + t.Nombre)));
-                    sw.WriteLine("  Suplentes " + p.EquipoVisitante.Nombre + ": " + (p.SuplentesVisitante.Count > 0 ? string.Join(", ", p.SuplentesVisitante.Select(s => s.Apellido + " " + s.Nombre)) : "-") );
-                }
-
-                sw.WriteLine("\n=== TABLA DE POSICIONES ===");
-                sw.WriteLine("Equipo | PJ | PG | PE | PP | Pts");
+                var resumenes = new List<(Equipo equipo, int pj, int pg, int pe, int pp, int pts, int gf, int gc)>();
                 foreach (Equipo e in Equipos)
                 {
                     int pj = ObtenerPartidosJugados(e);
@@ -460,7 +452,50 @@ namespace Proyecto2_Tema1
                     int pe = ObtenerEmpates(e);
                     int pp = ObtenerDerrotas(e);
                     int pts = pg * 3 + pe;
-                    sw.WriteLine(e.Nombre + " | " + pj + " | " + pg + " | " + pe + " | " + pp + " | " + pts);
+
+                    int golesFavor = 0;
+                    int golesContra = 0;
+                    foreach (Partido p in Partidos)
+                    {
+                        if (p.EquipoLocal == e)
+                        {
+                            golesFavor += p.GolesLocal;
+                            golesContra += p.GolesVisitante;
+                        }
+                        if (p.EquipoVisitante == e)
+                        {
+                            golesFavor += p.GolesVisitante;
+                            golesContra += p.GolesLocal;
+                        }
+                    }
+
+                    resumenes.Add((e, pj, pg, pe, pp, pts, golesFavor, golesContra));
+                }
+
+                var ordenGeneral = resumenes.OrderByDescending(r => r.pts)
+                                            .ThenByDescending(r => (r.gf - r.gc))
+                                            .ThenByDescending(r => r.gf)
+                                            .ToList();
+
+                foreach (var r in ordenGeneral)
+                {
+                    int dg = r.gf - r.gc;
+                    sw.WriteLine(r.equipo.Nombre + " | " + r.equipo.Categoria + " | " + r.pj + " | " + r.pg + " | " + r.pe + " | " + r.pp + " | " + r.pts + " | " + r.gf + " | " + r.gc + " | " + dg);
+                }
+
+                // Tablas por categoría, nos pareció necesario al igual que en el form de "tabla de posiciones".
+                foreach (Categoria cat in Enum.GetValues(typeof(Categoria)))
+                {
+                    var porCat = ordenGeneral.Where(x => x.equipo.Categoria == cat).ToList();
+                    if (porCat.Count == 0) continue;
+
+                    sw.WriteLine($"\n=== TABLA - {cat} ===");
+                    sw.WriteLine("Equipo | PJ | PG | PE | PP | Pts | GF | GC | DG");
+                    foreach (var r in porCat)
+                    {
+                        int dg = r.gf - r.gc;
+                        sw.WriteLine(r.equipo.Nombre + " | " + r.pj + " | " + r.pg + " | " + r.pe + " | " + r.pp + " | " + r.pts + " | " + r.gf + " | " + r.gc + " | " + dg);
+                    }
                 }
 
                 sw.WriteLine("\n=== RESUMEN ESTADÍSTICO POR EQUIPO ===");
@@ -483,20 +518,22 @@ namespace Proyecto2_Tema1
                     }
                     sw.WriteLine(e.Nombre + " | GF: " + golesFavor + " | GC: " + golesContra + " | Victorias: " + ObtenerVictorias(e) + " | Derrotas: " + ObtenerDerrotas(e));
                 }
+
+
             }
         }
 
         // Datos de prueba precargados
         public static void CargarDatosPrueba()
         {
-            // Datos manuales para demo con clubes de Bahía Blanca y jugadores explícitos
+            // Datos manuales para demo. Primero limpiamos todo para evitar duplicados.
             Equipos.Clear();
             Jugadores.Clear();
             Partidos.Clear();
             proximoIdEquipo = 1;
             proximoIdPartido = 1;
 
-            // --- PRIMERA: Olimpo vs Villa Mitre ---
+            // --- PRIMERA ---
             Equipo olimpo = AltaEquipo("Olimpo", Categoria.Primera);
             Equipo villa = AltaEquipo("Villa Mitre", Categoria.Primera);
 
@@ -530,7 +567,6 @@ namespace Proyecto2_Tema1
             AltaJugador("30000017", "Pablo", "Torres", 30, true, true);
             AsignarJugadorAEquipo("30000017", villa.Id);
 
-            // Partido Primera
             var p1 = AltaPartido(olimpo, villa, DateTime.Today.AddDays(-2), "16:00", "Estadio Municipal");
             if (p1 != null)
             {
@@ -540,7 +576,7 @@ namespace Proyecto2_Tema1
                 RegistrarResultado(p1.Id, 2, 1);
             }
 
-            // --- JUVENILES: Estudiantes vs Liniers ---
+            // --- JUVENILES ---
             Equipo estudiantes = AltaEquipo("Estudiantes", Categoria.Juveniles);
             Equipo liniers = AltaEquipo("Liniers", Categoria.Juveniles);
 
@@ -583,7 +619,7 @@ namespace Proyecto2_Tema1
                 RegistrarResultado(p2.Id, 1, 1);
             }
 
-            // --- CADETES: Libertad vs Dublin ---
+            // --- CADETES ---
             Equipo libertad = AltaEquipo("Libertad", Categoria.Cadetes);
             Equipo dublin = AltaEquipo("Dublin", Categoria.Cadetes);
 
@@ -626,7 +662,7 @@ namespace Proyecto2_Tema1
                 RegistrarResultado(p3.Id, 0, 2);
             }
 
-            // --- INFANTILES: Olimpo Infantiles vs Villa Mitre Infantiles ---
+            // --- INFANTILES ---
             Equipo olimpoInf = AltaEquipo("Olimpo", Categoria.Infantiles);
             Equipo villaInf = AltaEquipo("Villa Mitre", Categoria.Infantiles);
 
@@ -669,7 +705,7 @@ namespace Proyecto2_Tema1
                 RegistrarResultado(p4.Id, 3, 0);
             }
 
-            // --- VETERANOS: Estudiantes Veteranos vs Liniers Veteranos ---
+            // --- VETERANOS ---
             Equipo estVet = AltaEquipo("Estudiantes", Categoria.Veteranos);
             Equipo linVet = AltaEquipo("Liniers", Categoria.Veteranos);
 
