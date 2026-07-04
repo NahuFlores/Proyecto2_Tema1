@@ -483,57 +483,230 @@ namespace Proyecto2_Tema1
             }
         }
 
-        // Datos de prueba precargados para facilitar el testeo sin carga manual.
-        // Suposición: se incluyen equipos y jugadores de ejemplo por requerimiento del enunciado.
+        // Datos de prueba precargados (con ayuda de una IA por tiempo)
         public static void CargarDatosPrueba()
         {
-            // Equipos
-            Equipo e1 = AltaEquipo("Club Norte", Categoria.Primera);
-            Equipo e2 = AltaEquipo("Club Sur", Categoria.Primera);
+            // Datos manuales para demo con clubes de Bahía Blanca y jugadores explícitos
+            Equipos.Clear();
+            Jugadores.Clear();
+            Partidos.Clear();
+            proximoIdEquipo = 1;
+            proximoIdPartido = 1;
 
-            // Jugadores para equipo 1 (5 titulares + 2 suplentes)
-            AltaJugador("11111111", "Juan", "Perez", 22, true, true);
-            AltaJugador("11111112", "Pedro", "Martinez", 24, true, true);
-            AltaJugador("11111113", "Luis", "Sanchez", 21, true, true);
-            AltaJugador("11111114", "Diego", "Diaz", 23, true, true);
-            AltaJugador("11111115", "Mateo", "Rios", 22, true, true);
-            AltaJugador("11111116", "Andres", "Ruiz", 26, true, true);
-            AltaJugador("11111117", "Hector", "Morales", 20, true, true);
+            // --- PRIMERA: Olimpo vs Villa Mitre ---
+            Equipo olimpo = AltaEquipo("Olimpo", Categoria.Primera);
+            Equipo villa = AltaEquipo("Villa Mitre", Categoria.Primera);
 
-            // Jugadores para equipo 2 (5 titulares + 1 suplente)
-            AltaJugador("22222221", "Carlos", "Lopez", 25, true, false);
-            AltaJugador("22222222", "Lucas", "Gomez", 19, false, true);
-            AltaJugador("22222223", "Sergio", "Vega", 27, true, true);
-            AltaJugador("22222224", "Martin", "Diaz", 23, true, true);
-            AltaJugador("22222225", "Federico", "Torres", 29, true, true);
+            AltaJugador("30000001", "Martín", "López", 28, true, true);
+            AsignarJugadorAEquipo("30000001", olimpo.Id);
+            AltaJugador("30000002", "Diego", "Fernández", 26, true, true);
+            AsignarJugadorAEquipo("30000002", olimpo.Id);
+            AltaJugador("30000003", "Lucas", "Giménez", 24, true, true);
+            AsignarJugadorAEquipo("30000003", olimpo.Id);
+            AltaJugador("30000004", "Federico", "Romero", 23, true, true);
+            AsignarJugadorAEquipo("30000004", olimpo.Id);
+            AltaJugador("30000005", "Agustín", "Pérez", 21, true, true);
+            AsignarJugadorAEquipo("30000005", olimpo.Id);
+            AltaJugador("30000006", "Santiago", "González", 29, true, true);
+            AsignarJugadorAEquipo("30000006", olimpo.Id);
+            AltaJugador("30000007", "Tomás", "Martínez", 22, true, true);
+            AsignarJugadorAEquipo("30000007", olimpo.Id);
 
-            // Asignar jugadores a equipos
-            AsignarJugadorAEquipo("11111111", e1.Id);
-            AsignarJugadorAEquipo("11111112", e1.Id);
-            AsignarJugadorAEquipo("11111113", e1.Id);
-            AsignarJugadorAEquipo("11111114", e1.Id);
-            AsignarJugadorAEquipo("11111115", e1.Id);
-            AsignarJugadorAEquipo("11111116", e1.Id);
-            AsignarJugadorAEquipo("11111117", e1.Id);
+            AltaJugador("30000011", "Javier", "Suárez", 27, true, true);
+            AsignarJugadorAEquipo("30000011", villa.Id);
+            AltaJugador("30000012", "Gonzalo", "Rojas", 25, true, true);
+            AsignarJugadorAEquipo("30000012", villa.Id);
+            AltaJugador("30000013", "Marcos", "Sosa", 24, true, true);
+            AsignarJugadorAEquipo("30000013", villa.Id);
+            AltaJugador("30000014", "Emiliano", "Cáceres", 26, true, true);
+            AsignarJugadorAEquipo("30000014", villa.Id);
+            AltaJugador("30000015", "Nicolás", "Díaz", 23, true, true);
+            AsignarJugadorAEquipo("30000015", villa.Id);
+            AltaJugador("30000016", "Facundo", "Alonso", 22, true, true);
+            AsignarJugadorAEquipo("30000016", villa.Id);
+            AltaJugador("30000017", "Pablo", "Torres", 30, true, true);
+            AsignarJugadorAEquipo("30000017", villa.Id);
 
-            AsignarJugadorAEquipo("22222221", e2.Id);
-            AsignarJugadorAEquipo("22222222", e2.Id);
-            AsignarJugadorAEquipo("22222223", e2.Id);
-            AsignarJugadorAEquipo("22222224", e2.Id);
-            AsignarJugadorAEquipo("22222225", e2.Id);
-
-            // Crear un partido de ejemplo entre e1 y e2
-            Partido p = AltaPartido(e1, e2, DateTime.Today, "16:00", "Cancha Central");
-            if (p != null)
+            // Partido Primera
+            var p1 = AltaPartido(olimpo, villa, DateTime.Today.AddDays(-2), "16:00", "Estadio Municipal");
+            if (p1 != null)
             {
-                // Preparar alineaciones (primeros 5 como titulares, resto suplentes)
-                var titularesLocal = new List<Jugador>() { ObtenerJugadoresPorEquipo(e1.Id)[0], ObtenerJugadoresPorEquipo(e1.Id)[1], ObtenerJugadoresPorEquipo(e1.Id)[2], ObtenerJugadoresPorEquipo(e1.Id)[3], ObtenerJugadoresPorEquipo(e1.Id)[4] };
-                var suplentesLocal = new List<Jugador>() { ObtenerJugadoresPorEquipo(e1.Id)[5], ObtenerJugadoresPorEquipo(e1.Id)[6] };
-                var titularesVisitante = new List<Jugador>() { ObtenerJugadoresPorEquipo(e2.Id)[0], ObtenerJugadoresPorEquipo(e2.Id)[1], ObtenerJugadoresPorEquipo(e2.Id)[2], ObtenerJugadoresPorEquipo(e2.Id)[3], ObtenerJugadoresPorEquipo(e2.Id)[4] };
-                var suplentesVisitante = new List<Jugador>();
+                var tOL = ObtenerJugadoresPorEquipo(olimpo.Id);
+                var tVI = ObtenerJugadoresPorEquipo(villa.Id);
+                ConfigurarAlineacion(p1.Id, new List<Jugador>{tOL[0],tOL[1],tOL[2],tOL[3],tOL[4]}, new List<Jugador>{tOL[5],tOL[6]}, new List<Jugador>{tVI[0],tVI[1],tVI[2],tVI[3],tVI[4]}, new List<Jugador>{tVI[5],tVI[6]});
+                RegistrarResultado(p1.Id, 2, 1);
+            }
 
-                ConfigurarAlineacion(p.Id, titularesLocal, suplentesLocal, titularesVisitante, suplentesVisitante);
-                RegistrarResultado(p.Id, 2, 1);
+            // --- JUVENILES: Estudiantes vs Liniers ---
+            Equipo estudiantes = AltaEquipo("Estudiantes", Categoria.Juveniles);
+            Equipo liniers = AltaEquipo("Liniers", Categoria.Juveniles);
+
+            AltaJugador("31000001", "Matías", "Vega", 17, true, true);
+            AsignarJugadorAEquipo("31000001", estudiantes.Id);
+            AltaJugador("31000002", "Marcelo", "Castro", 16, true, true);
+            AsignarJugadorAEquipo("31000002", estudiantes.Id);
+            AltaJugador("31000003", "Juan", "Iglesias", 16, true, true);
+            AsignarJugadorAEquipo("31000003", estudiantes.Id);
+            AltaJugador("31000004", "Leandro", "Aguirre", 17, true, true);
+            AsignarJugadorAEquipo("31000004", estudiantes.Id);
+            AltaJugador("31000005", "Rodrigo", "Ramos", 16, true, true);
+            AsignarJugadorAEquipo("31000005", estudiantes.Id);
+            AltaJugador("31000006", "Ezequiel", "Córdoba", 17, true, true);
+            AsignarJugadorAEquipo("31000006", estudiantes.Id);
+            AltaJugador("31000007", "Néstor", "Molina", 16, true, true);
+            AsignarJugadorAEquipo("31000007", estudiantes.Id);
+
+            AltaJugador("31000011", "Fabián", "Sánchez", 16, true, true);
+            AsignarJugadorAEquipo("31000011", liniers.Id);
+            AltaJugador("31000012", "Raúl", "Peralta", 17, true, true);
+            AsignarJugadorAEquipo("31000012", liniers.Id);
+            AltaJugador("31000013", "Hernán", "Villar", 16, true, true);
+            AsignarJugadorAEquipo("31000013", liniers.Id);
+            AltaJugador("31000014", "Germán", "Ojeda", 17, true, true);
+            AsignarJugadorAEquipo("31000014", liniers.Id);
+            AltaJugador("31000015", "Maximiliano", "Núñez", 16, true, true);
+            AsignarJugadorAEquipo("31000015", liniers.Id);
+            AltaJugador("31000016", "Álvaro", "Suárez", 17, true, true);
+            AsignarJugadorAEquipo("31000016", liniers.Id);
+            AltaJugador("31000017", "Iván", "Oliva", 16, true, true);
+            AsignarJugadorAEquipo("31000017", liniers.Id);
+
+            var p2 = AltaPartido(estudiantes, liniers, DateTime.Today.AddDays(-10), "15:00", "Cancha Juvenil");
+            if (p2 != null)
+            {
+                var te = ObtenerJugadoresPorEquipo(estudiantes.Id);
+                var tl = ObtenerJugadoresPorEquipo(liniers.Id);
+                ConfigurarAlineacion(p2.Id, new List<Jugador>{te[0],te[1],te[2],te[3],te[4]}, new List<Jugador>{te[5],te[6]}, new List<Jugador>{tl[0],tl[1],tl[2],tl[3],tl[4]}, new List<Jugador>{tl[5],tl[6]});
+                RegistrarResultado(p2.Id, 1, 1);
+            }
+
+            // --- CADETES: Libertad vs Dublin ---
+            Equipo libertad = AltaEquipo("Libertad", Categoria.Cadetes);
+            Equipo dublin = AltaEquipo("Dublin", Categoria.Cadetes);
+
+            AltaJugador("32000001", "Emilio", "García", 14, true, true);
+            AsignarJugadorAEquipo("32000001", libertad.Id);
+            AltaJugador("32000002", "Tommy", "Herrera", 15, true, true);
+            AsignarJugadorAEquipo("32000002", libertad.Id);
+            AltaJugador("32000003", "Bautista", "Roldán", 15, true, true);
+            AsignarJugadorAEquipo("32000003", libertad.Id);
+            AltaJugador("32000004", "Sergio", "Cruz", 13, true, true);
+            AsignarJugadorAEquipo("32000004", libertad.Id);
+            AltaJugador("32000005", "Alan", "Suárez", 14, true, true);
+            AsignarJugadorAEquipo("32000005", libertad.Id);
+            AltaJugador("32000006", "León", "Perdi", 15, true, true);
+            AsignarJugadorAEquipo("32000006", libertad.Id);
+            AltaJugador("32000007", "Ítalo", "Funes", 14, true, true);
+            AsignarJugadorAEquipo("32000007", libertad.Id);
+
+            AltaJugador("32000011", "Matheo", "Rossi", 14, true, true);
+            AsignarJugadorAEquipo("32000011", dublin.Id);
+            AltaJugador("32000012", "Ciro", "Benítez", 13, true, true);
+            AsignarJugadorAEquipo("32000012", dublin.Id);
+            AltaJugador("32000013", "Brías", "Paz", 15, true, true);
+            AsignarJugadorAEquipo("32000013", dublin.Id);
+            AltaJugador("32000014", "Bautista", "Luna", 14, true, true);
+            AsignarJugadorAEquipo("32000014", dublin.Id);
+            AltaJugador("32000015", "Elías", "Campos", 15, true, true);
+            AsignarJugadorAEquipo("32000015", dublin.Id);
+            AltaJugador("32000016", "Facu", "Maldonado", 14, true, true);
+            AsignarJugadorAEquipo("32000016", dublin.Id);
+            AltaJugador("32000017", "Iván", "Pinto", 14, true, true);
+            AsignarJugadorAEquipo("32000017", dublin.Id);
+
+            var p3 = AltaPartido(libertad, dublin, DateTime.Today.AddDays(-5), "14:00", "Cancha Cadetes");
+            if (p3 != null)
+            {
+                var tlb = ObtenerJugadoresPorEquipo(libertad.Id);
+                var tdb = ObtenerJugadoresPorEquipo(dublin.Id);
+                ConfigurarAlineacion(p3.Id, new List<Jugador>{tlb[0],tlb[1],tlb[2],tlb[3],tlb[4]}, new List<Jugador>{tlb[5],tlb[6]}, new List<Jugador>{tdb[0],tdb[1],tdb[2],tdb[3],tdb[4]}, new List<Jugador>{tdb[5],tdb[6]});
+                RegistrarResultado(p3.Id, 0, 2);
+            }
+
+            // --- INFANTILES: Olimpo Infantiles vs Villa Mitre Infantiles ---
+            Equipo olimpoInf = AltaEquipo("Olimpo", Categoria.Infantiles);
+            Equipo villaInf = AltaEquipo("Villa Mitre", Categoria.Infantiles);
+
+            AltaJugador("33000001", "Santino", "Navarro", 11, false, false);
+            AsignarJugadorAEquipo("33000001", olimpoInf.Id);
+            AltaJugador("33000002", "Dylan", "Leiva", 12, false, false);
+            AsignarJugadorAEquipo("33000002", olimpoInf.Id);
+            AltaJugador("33000003", "Tomás", "Ledesma", 10, false, false);
+            AsignarJugadorAEquipo("33000003", olimpoInf.Id);
+            AltaJugador("33000004", "Benjamín", "Correa", 12, false, false);
+            AsignarJugadorAEquipo("33000004", olimpoInf.Id);
+            AltaJugador("33000005", "Mateo", "Ayala", 11, false, false);
+            AsignarJugadorAEquipo("33000005", olimpoInf.Id);
+            AltaJugador("33000006", "Emiliano", "Cisneros", 12, false, false);
+            AsignarJugadorAEquipo("33000006", olimpoInf.Id);
+            AltaJugador("33000007", "Iker", "Agüero", 11, false, false);
+            AsignarJugadorAEquipo("33000007", olimpoInf.Id);
+
+            AltaJugador("33000011", "Lautaro", "Brito", 12, false, false);
+            AsignarJugadorAEquipo("33000011", villaInf.Id);
+            AltaJugador("33000012", "Ian", "Ferrer", 11, false, false);
+            AsignarJugadorAEquipo("33000012", villaInf.Id);
+            AltaJugador("33000013", "Gael", "Paredes", 10, false, false);
+            AsignarJugadorAEquipo("33000013", villaInf.Id);
+            AltaJugador("33000014", "Noah", "Riquelme", 12, false, false);
+            AsignarJugadorAEquipo("33000014", villaInf.Id);
+            AltaJugador("33000015", "Thiago", "Serrano", 11, false, false);
+            AsignarJugadorAEquipo("33000015", villaInf.Id);
+            AltaJugador("33000016", "Damián", "Vega", 12, false, false);
+            AsignarJugadorAEquipo("33000016", villaInf.Id);
+            AltaJugador("33000017", "Joel", "Morales", 10, false, false);
+            AsignarJugadorAEquipo("33000017", villaInf.Id);
+
+            var p4 = AltaPartido(olimpoInf, villaInf, DateTime.Today.AddDays(-1), "10:00", "Cancha Infantil");
+            if (p4 != null)
+            {
+                var toi = ObtenerJugadoresPorEquipo(olimpoInf.Id);
+                var tvi = ObtenerJugadoresPorEquipo(villaInf.Id);
+                ConfigurarAlineacion(p4.Id, new List<Jugador>{toi[0],toi[1],toi[2],toi[3],toi[4]}, new List<Jugador>{toi[5],toi[6]}, new List<Jugador>{tvi[0],tvi[1],tvi[2],tvi[3],tvi[4]}, new List<Jugador>{tvi[5],tvi[6]});
+                RegistrarResultado(p4.Id, 3, 0);
+            }
+
+            // --- VETERANOS: Estudiantes Veteranos vs Liniers Veteranos ---
+            Equipo estVet = AltaEquipo("Estudiantes", Categoria.Veteranos);
+            Equipo linVet = AltaEquipo("Liniers", Categoria.Veteranos);
+
+            AltaJugador("34000001", "Roberto", "Arias", 36, true, true);
+            AsignarJugadorAEquipo("34000001", estVet.Id);
+            AltaJugador("34000002", "Hugo", "Márquez", 38, true, true);
+            AsignarJugadorAEquipo("34000002", estVet.Id);
+            AltaJugador("34000003", "Ricardo", "Santos", 40, true, true);
+            AsignarJugadorAEquipo("34000003", estVet.Id);
+            AltaJugador("34000004", "Carlos", "Herrero", 45, true, true);
+            AsignarJugadorAEquipo("34000004", estVet.Id);
+            AltaJugador("34000005", "Óscar", "Duarte", 37, true, true);
+            AsignarJugadorAEquipo("34000005", estVet.Id);
+            AltaJugador("34000006", "Alberto", "Rico", 42, true, true);
+            AsignarJugadorAEquipo("34000006", estVet.Id);
+            AltaJugador("34000007", "Norberto", "Vega", 39, true, true);
+            AsignarJugadorAEquipo("34000007", estVet.Id);
+
+            AltaJugador("34000011", "Víctor", "Ponce", 36, true, true);
+            AsignarJugadorAEquipo("34000011", linVet.Id);
+            AltaJugador("34000012", "Miguel", "Benítez", 41, true, true);
+            AsignarJugadorAEquipo("34000012", linVet.Id);
+            AltaJugador("34000013", "Eduardo", "Neri", 38, true, true);
+            AsignarJugadorAEquipo("34000013", linVet.Id);
+            AltaJugador("34000014", "Santos", "Pérez", 44, true, true);
+            AsignarJugadorAEquipo("34000014", linVet.Id);
+            AltaJugador("34000015", "Félix", "Córdoba", 35, true, true);
+            AsignarJugadorAEquipo("34000015", linVet.Id);
+            AltaJugador("34000016", "Joaquín", "Marín", 37, true, true);
+            AsignarJugadorAEquipo("34000016", linVet.Id);
+            AltaJugador("34000017", "Gustavo", "León", 39, true, true);
+            AsignarJugadorAEquipo("34000017", linVet.Id);
+
+            var p5 = AltaPartido(estVet, linVet, DateTime.Today.AddDays(-20), "11:00", "Cancha Veteranos");
+            if (p5 != null)
+            {
+                var tev = ObtenerJugadoresPorEquipo(estVet.Id);
+                var tlv = ObtenerJugadoresPorEquipo(linVet.Id);
+                ConfigurarAlineacion(p5.Id, new List<Jugador>{tev[0],tev[1],tev[2],tev[3],tev[4]}, new List<Jugador>{tev[5],tev[6]}, new List<Jugador>{tlv[0],tlv[1],tlv[2],tlv[3],tlv[4]}, new List<Jugador>{tlv[5],tlv[6]});
+                RegistrarResultado(p5.Id, 2, 2);
             }
         }
     }

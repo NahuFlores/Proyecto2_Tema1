@@ -5,31 +5,24 @@ using System.Windows.Forms;
 
 namespace Proyecto2_Tema1
 {
-    public class FormTablaPosiciones : Form
+    public partial class FormTablaPosiciones : Form
     {
-        private DataGridView dgv;
-        private Button btnCerrar;
-
         public FormTablaPosiciones()
         {
-            Text = "Tabla de Posiciones";
-            Width = 700;
-            Height = 400;
-            StartPosition = FormStartPosition.CenterParent;
-
-            dgv = new DataGridView { Dock = DockStyle.Top, Height = 320, ReadOnly = true, AllowUserToAddRows = false, AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill };
-            btnCerrar = new Button { Text = "Cerrar", Dock = DockStyle.Bottom, Height = 30 };
-
-            btnCerrar.Click += (s, e) => Close();
-
-            Controls.Add(dgv);
-            Controls.Add(btnCerrar);
-
+            InitializeComponent();
             Load += FormTablaPosiciones_Load;
+            cmbCategoria.SelectedIndexChanged += (s, e) => CargarTablaSegunSeleccion();
+            btnCerrar.Click += (s, e) => Close();
         }
 
         private void FormTablaPosiciones_Load(object sender, EventArgs e)
         {
+            // Categorías (incluye opción "Todas")
+            cmbCategoria.Items.Add("Todas");
+            foreach (var c in Enum.GetValues(typeof(Categoria)))
+                cmbCategoria.Items.Add(c.ToString());
+            cmbCategoria.SelectedIndex = 0; // Por defecto muestra todas las categorías
+
             var table = new DataTable();
             table.Columns.Add("Equipo", typeof(string));
             table.Columns.Add("PJ", typeof(int));
@@ -41,8 +34,34 @@ namespace Proyecto2_Tema1
             table.Columns.Add("DG", typeof(int));
             table.Columns.Add("Pts", typeof(int));
 
+            // Rellenar la tabla
+            CargarTablaSegunSeleccion();
+        }
+
+        private void CargarTablaSegunSeleccion()
+        {
+            var tableLocal = new DataTable();
+            tableLocal.Columns.Add("Equipo", typeof(string));
+            tableLocal.Columns.Add("PJ", typeof(int));
+            tableLocal.Columns.Add("PG", typeof(int));
+            tableLocal.Columns.Add("PE", typeof(int));
+            tableLocal.Columns.Add("PP", typeof(int));
+            tableLocal.Columns.Add("GF", typeof(int));
+            tableLocal.Columns.Add("GC", typeof(int));
+            tableLocal.Columns.Add("DG", typeof(int));
+            tableLocal.Columns.Add("Pts", typeof(int));
+
+            Categoria? filtro = null;
+            if (cmbCategoria.SelectedIndex > 0)
+            {
+                var texto = cmbCategoria.SelectedItem.ToString();
+                if (Enum.TryParse<Categoria>(texto, out var cat)) filtro = cat;
+            }
+
             foreach (var equipo in GestorLiga.Equipos)
             {
+                if (filtro != null && equipo.Categoria != filtro.Value) continue;
+
                 int pj = GestorLiga.ObtenerPartidosJugados(equipo);
                 int pg = GestorLiga.ObtenerVictorias(equipo);
                 int pe = GestorLiga.ObtenerEmpates(equipo);
@@ -64,12 +83,14 @@ namespace Proyecto2_Tema1
                 }
                 int pts = pg * 3 + pe;
                 int dg = gf - gc;
-                table.Rows.Add(equipo.Nombre, pj, pg, pe, pp, gf, gc, dg, pts);
+                tableLocal.Rows.Add(equipo.Nombre, pj, pg, pe, pp, gf, gc, dg, pts);
             }
 
-            var dv = table.DefaultView;
+            var dv = tableLocal.DefaultView;
+            // Ordenar por puntos, diferencia de goles y goles a favor
             dv.Sort = "Pts DESC, DG DESC, GF DESC";
             dgv.DataSource = dv.ToTable();
         }
+
     }
 }
