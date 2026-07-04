@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPartidos));
             this.lblCategoria = new System.Windows.Forms.Label();
             this.cboCategoria = new System.Windows.Forms.ComboBox();
             this.lblLocal = new System.Windows.Forms.Label();
@@ -112,7 +113,7 @@
             // lblTitularesLocal
             // 
             this.lblTitularesLocal.AutoSize = true;
-            this.lblTitularesLocal.Location = new System.Drawing.Point(158, 100);
+            this.lblTitularesLocal.Location = new System.Drawing.Point(90, 100);
             this.lblTitularesLocal.Name = "lblTitularesLocal";
             this.lblTitularesLocal.Size = new System.Drawing.Size(122, 13);
             this.lblTitularesLocal.TabIndex = 6;
@@ -121,15 +122,15 @@
             // clbTitularesLocal
             // 
             this.clbTitularesLocal.FormattingEnabled = true;
-            this.clbTitularesLocal.Location = new System.Drawing.Point(161, 126);
+            this.clbTitularesLocal.Location = new System.Drawing.Point(93, 126);
             this.clbTitularesLocal.Name = "clbTitularesLocal";
-            this.clbTitularesLocal.Size = new System.Drawing.Size(120, 94);
+            this.clbTitularesLocal.Size = new System.Drawing.Size(127, 94);
             this.clbTitularesLocal.TabIndex = 7;
             // 
             // lblSuplentesLocal
             // 
             this.lblSuplentesLocal.AutoSize = true;
-            this.lblSuplentesLocal.Location = new System.Drawing.Point(158, 250);
+            this.lblSuplentesLocal.Location = new System.Drawing.Point(90, 250);
             this.lblSuplentesLocal.Name = "lblSuplentesLocal";
             this.lblSuplentesLocal.Size = new System.Drawing.Size(130, 13);
             this.lblSuplentesLocal.TabIndex = 8;
@@ -138,23 +139,23 @@
             // clbSuplentesLocal
             // 
             this.clbSuplentesLocal.FormattingEnabled = true;
-            this.clbSuplentesLocal.Location = new System.Drawing.Point(161, 276);
+            this.clbSuplentesLocal.Location = new System.Drawing.Point(93, 276);
             this.clbSuplentesLocal.Name = "clbSuplentesLocal";
-            this.clbSuplentesLocal.Size = new System.Drawing.Size(120, 94);
+            this.clbSuplentesLocal.Size = new System.Drawing.Size(127, 94);
             this.clbSuplentesLocal.TabIndex = 9;
             // 
             // clbTitularesVisitante
             // 
             this.clbTitularesVisitante.FormattingEnabled = true;
-            this.clbTitularesVisitante.Location = new System.Drawing.Point(405, 126);
+            this.clbTitularesVisitante.Location = new System.Drawing.Point(349, 126);
             this.clbTitularesVisitante.Name = "clbTitularesVisitante";
-            this.clbTitularesVisitante.Size = new System.Drawing.Size(120, 94);
+            this.clbTitularesVisitante.Size = new System.Drawing.Size(133, 94);
             this.clbTitularesVisitante.TabIndex = 11;
             // 
             // lblTitularesVisitante
             // 
             this.lblTitularesVisitante.AutoSize = true;
-            this.lblTitularesVisitante.Location = new System.Drawing.Point(402, 100);
+            this.lblTitularesVisitante.Location = new System.Drawing.Point(346, 100);
             this.lblTitularesVisitante.Name = "lblTitularesVisitante";
             this.lblTitularesVisitante.Size = new System.Drawing.Size(136, 13);
             this.lblTitularesVisitante.TabIndex = 10;
@@ -163,7 +164,7 @@
             // clbSuplentesVisitante
             // 
             this.clbSuplentesVisitante.FormattingEnabled = true;
-            this.clbSuplentesVisitante.Location = new System.Drawing.Point(397, 276);
+            this.clbSuplentesVisitante.Location = new System.Drawing.Point(349, 276);
             this.clbSuplentesVisitante.Name = "clbSuplentesVisitante";
             this.clbSuplentesVisitante.Size = new System.Drawing.Size(133, 94);
             this.clbSuplentesVisitante.TabIndex = 13;
@@ -171,7 +172,7 @@
             // lblSuplentesVisitante
             // 
             this.lblSuplentesVisitante.AutoSize = true;
-            this.lblSuplentesVisitante.Location = new System.Drawing.Point(394, 250);
+            this.lblSuplentesVisitante.Location = new System.Drawing.Point(338, 250);
             this.lblSuplentesVisitante.Name = "lblSuplentesVisitante";
             this.lblSuplentesVisitante.Size = new System.Drawing.Size(144, 13);
             this.lblSuplentesVisitante.TabIndex = 12;
@@ -180,7 +181,7 @@
             // lblFecha
             // 
             this.lblFecha.AutoSize = true;
-            this.lblFecha.Location = new System.Drawing.Point(17, 415);
+            this.lblFecha.Location = new System.Drawing.Point(46, 444);
             this.lblFecha.Name = "lblFecha";
             this.lblFecha.Size = new System.Drawing.Size(40, 13);
             this.lblFecha.TabIndex = 14;
@@ -188,7 +189,7 @@
             // 
             // dtpFecha
             // 
-            this.dtpFecha.Location = new System.Drawing.Point(63, 409);
+            this.dtpFecha.Location = new System.Drawing.Point(92, 438);
             this.dtpFecha.Name = "dtpFecha";
             this.dtpFecha.Size = new System.Drawing.Size(218, 20);
             this.dtpFecha.TabIndex = 15;
@@ -196,7 +197,7 @@
             // lblHorario
             // 
             this.lblHorario.AutoSize = true;
-            this.lblHorario.Location = new System.Drawing.Point(311, 415);
+            this.lblHorario.Location = new System.Drawing.Point(332, 440);
             this.lblHorario.Name = "lblHorario";
             this.lblHorario.Size = new System.Drawing.Size(44, 13);
             this.lblHorario.TabIndex = 16;
@@ -204,7 +205,7 @@
             // 
             // txtHorario
             // 
-            this.txtHorario.Location = new System.Drawing.Point(361, 412);
+            this.txtHorario.Location = new System.Drawing.Point(382, 437);
             this.txtHorario.Name = "txtHorario";
             this.txtHorario.Size = new System.Drawing.Size(100, 20);
             this.txtHorario.TabIndex = 17;
@@ -212,7 +213,7 @@
             // lblLugar
             // 
             this.lblLugar.AutoSize = true;
-            this.lblLugar.Location = new System.Drawing.Point(510, 414);
+            this.lblLugar.Location = new System.Drawing.Point(200, 479);
             this.lblLugar.Name = "lblLugar";
             this.lblLugar.Size = new System.Drawing.Size(37, 13);
             this.lblLugar.TabIndex = 18;
@@ -220,7 +221,7 @@
             // 
             // txtLugar
             // 
-            this.txtLugar.Location = new System.Drawing.Point(553, 412);
+            this.txtLugar.Location = new System.Drawing.Point(243, 477);
             this.txtLugar.Name = "txtLugar";
             this.txtLugar.Size = new System.Drawing.Size(100, 20);
             this.txtLugar.TabIndex = 19;
@@ -228,7 +229,7 @@
             // lblGolesLocal
             // 
             this.lblGolesLocal.AutoSize = true;
-            this.lblGolesLocal.Location = new System.Drawing.Point(21, 459);
+            this.lblGolesLocal.Location = new System.Drawing.Point(48, 392);
             this.lblGolesLocal.Name = "lblGolesLocal";
             this.lblGolesLocal.Size = new System.Drawing.Size(66, 13);
             this.lblGolesLocal.TabIndex = 20;
@@ -236,14 +237,14 @@
             // 
             // txtGolesLocal
             // 
-            this.txtGolesLocal.Location = new System.Drawing.Point(93, 456);
+            this.txtGolesLocal.Location = new System.Drawing.Point(120, 389);
             this.txtGolesLocal.Name = "txtGolesLocal";
             this.txtGolesLocal.Size = new System.Drawing.Size(100, 20);
             this.txtGolesLocal.TabIndex = 21;
             // 
             // txtGolesVisitante
             // 
-            this.txtGolesVisitante.Location = new System.Drawing.Point(406, 456);
+            this.txtGolesVisitante.Location = new System.Drawing.Point(382, 386);
             this.txtGolesVisitante.Name = "txtGolesVisitante";
             this.txtGolesVisitante.Size = new System.Drawing.Size(100, 20);
             this.txtGolesVisitante.TabIndex = 23;
@@ -251,7 +252,7 @@
             // lblGolesVisitante
             // 
             this.lblGolesVisitante.AutoSize = true;
-            this.lblGolesVisitante.Location = new System.Drawing.Point(320, 459);
+            this.lblGolesVisitante.Location = new System.Drawing.Point(296, 389);
             this.lblGolesVisitante.Name = "lblGolesVisitante";
             this.lblGolesVisitante.Size = new System.Drawing.Size(80, 13);
             this.lblGolesVisitante.TabIndex = 22;
@@ -259,19 +260,20 @@
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(314, 512);
+            this.btnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnGuardar.Location = new System.Drawing.Point(212, 514);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(131, 34);
             this.btnGuardar.TabIndex = 24;
             this.btnGuardar.Text = "Registrar Partido";
-            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // FormPartidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 570);
+            this.ClientSize = new System.Drawing.Size(561, 570);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.txtGolesVisitante);
             this.Controls.Add(this.lblGolesVisitante);
@@ -297,6 +299,7 @@
             this.Controls.Add(this.lblLocal);
             this.Controls.Add(this.cboCategoria);
             this.Controls.Add(this.lblCategoria);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormPartidos";
             this.Text = "Form1";
             this.ResumeLayout(false);

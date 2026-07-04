@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormHistorial));
             this.lblTitulo = new System.Windows.Forms.Label();
             this.dgvHistorial = new System.Windows.Forms.DataGridView();
             this.btnVerFormacion = new System.Windows.Forms.Button();
@@ -53,12 +54,13 @@
             // 
             // btnVerFormacion
             // 
+            this.btnVerFormacion.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnVerFormacion.Location = new System.Drawing.Point(333, 384);
             this.btnVerFormacion.Name = "btnVerFormacion";
             this.btnVerFormacion.Size = new System.Drawing.Size(138, 42);
             this.btnVerFormacion.TabIndex = 2;
             this.btnVerFormacion.Text = "Ver Formación";
-            this.btnVerFormacion.UseVisualStyleBackColor = true;
+            this.btnVerFormacion.UseVisualStyleBackColor = false;
             this.btnVerFormacion.Click += new System.EventHandler(this.btnVerFormacion_Click);
             // 
             // FormHistorial
@@ -69,6 +71,7 @@
             this.Controls.Add(this.btnVerFormacion);
             this.Controls.Add(this.dgvHistorial);
             this.Controls.Add(this.lblTitulo);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormHistorial";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.dgvHistorial)).EndInit();

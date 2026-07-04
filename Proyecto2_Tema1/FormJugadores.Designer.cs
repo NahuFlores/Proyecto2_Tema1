@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormJugadores));
             this.lblDni = new System.Windows.Forms.Label();
             this.txtDni = new System.Windows.Forms.TextBox();
             this.lblNombre = new System.Windows.Forms.Label();
@@ -130,22 +131,24 @@
             // 
             // btnAgregar
             // 
+            this.btnAgregar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnAgregar.Location = new System.Drawing.Point(15, 254);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(104, 23);
             this.btnAgregar.TabIndex = 10;
             this.btnAgregar.Text = "Agregar Jugador";
-            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.UseVisualStyleBackColor = false;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // btnEliminar
             // 
+            this.btnEliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnEliminar.Location = new System.Drawing.Point(15, 293);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(104, 23);
             this.btnEliminar.TabIndex = 11;
             this.btnEliminar.Text = "Eliminar Jugador";
-            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.UseVisualStyleBackColor = false;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // dgvJugadores
@@ -153,14 +156,14 @@
             this.dgvJugadores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvJugadores.Location = new System.Drawing.Point(192, 12);
             this.dgvJugadores.Name = "dgvJugadores";
-            this.dgvJugadores.Size = new System.Drawing.Size(586, 409);
+            this.dgvJugadores.Size = new System.Drawing.Size(670, 409);
             this.dgvJugadores.TabIndex = 12;
             // 
             // FormJugadores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(888, 450);
             this.Controls.Add(this.dgvJugadores);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnAgregar);
@@ -174,6 +177,7 @@
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.txtDni);
             this.Controls.Add(this.lblDni);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormJugadores";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.dgvJugadores)).EndInit();

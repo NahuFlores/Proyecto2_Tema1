@@ -43,7 +43,7 @@
             // 
             this.btnEquipos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnEquipos.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEquipos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEquipos.Font = new System.Drawing.Font("Gill Sans MT", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEquipos.Location = new System.Drawing.Point(34, 254);
             this.btnEquipos.Name = "btnEquipos";
             this.btnEquipos.Size = new System.Drawing.Size(277, 36);
@@ -56,7 +56,7 @@
             // 
             this.btnJugadores.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnJugadores.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnJugadores.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnJugadores.Font = new System.Drawing.Font("Gill Sans MT", 14.25F, System.Drawing.FontStyle.Bold);
             this.btnJugadores.Location = new System.Drawing.Point(34, 296);
             this.btnJugadores.Name = "btnJugadores";
             this.btnJugadores.Size = new System.Drawing.Size(277, 36);
@@ -69,7 +69,7 @@
             // 
             this.btnPartidos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnPartidos.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPartidos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPartidos.Font = new System.Drawing.Font("Gill Sans MT", 14.25F, System.Drawing.FontStyle.Bold);
             this.btnPartidos.Location = new System.Drawing.Point(34, 338);
             this.btnPartidos.Name = "btnPartidos";
             this.btnPartidos.Size = new System.Drawing.Size(277, 36);
@@ -82,7 +82,7 @@
             // 
             this.btnHistorial.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnHistorial.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnHistorial.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHistorial.Font = new System.Drawing.Font("Gill Sans MT", 14.25F, System.Drawing.FontStyle.Bold);
             this.btnHistorial.Location = new System.Drawing.Point(34, 380);
             this.btnHistorial.Name = "btnHistorial";
             this.btnHistorial.Size = new System.Drawing.Size(277, 36);
@@ -95,7 +95,7 @@
             // 
             this.btnTabla.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnTabla.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnTabla.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTabla.Font = new System.Drawing.Font("Gill Sans MT", 14.25F, System.Drawing.FontStyle.Bold);
             this.btnTabla.Location = new System.Drawing.Point(34, 422);
             this.btnTabla.Name = "btnTabla";
             this.btnTabla.Size = new System.Drawing.Size(277, 36);
@@ -108,7 +108,7 @@
             // 
             this.btnReporte.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnReporte.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnReporte.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReporte.Font = new System.Drawing.Font("Gill Sans MT", 14.25F, System.Drawing.FontStyle.Bold);
             this.btnReporte.Location = new System.Drawing.Point(34, 464);
             this.btnReporte.Name = "btnReporte";
             this.btnReporte.Size = new System.Drawing.Size(277, 36);
@@ -120,9 +120,9 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(55, 29);
+            this.pictureBox1.Location = new System.Drawing.Point(53, 46);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(235, 219);
+            this.pictureBox1.Size = new System.Drawing.Size(235, 181);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;

@@ -19,37 +19,55 @@ namespace Proyecto2_Tema1
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new Container();
-            this.dgv = new DataGridView();
-            this.cmbCategoria = new ComboBox();
-            this.btnCerrar = new Button();
-
-            // Form
-            this.Text = "Tabla de Posiciones";
-            this.StartPosition = FormStartPosition.CenterParent;
-            this.ClientSize = new System.Drawing.Size(700, 400);
-
-            // cmbCategoria
-            this.cmbCategoria.Dock = DockStyle.Top;
-            this.cmbCategoria.Height = 30;
-            this.cmbCategoria.DropDownStyle = ComboBoxStyle.DropDownList;
-
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormTablaPosiciones));
+            this.dgv = new System.Windows.Forms.DataGridView();
+            this.cmbCategoria = new System.Windows.Forms.ComboBox();
+            this.btnCerrar = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
+            this.SuspendLayout();
+            // 
             // dgv
-            this.dgv.Dock = DockStyle.Top;
-            this.dgv.Height = 320;
-            this.dgv.ReadOnly = true;
+            // 
             this.dgv.AllowUserToAddRows = false;
-            this.dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
+            this.dgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dgv.Location = new System.Drawing.Point(0, 21);
+            this.dgv.Name = "dgv";
+            this.dgv.ReadOnly = true;
+            this.dgv.Size = new System.Drawing.Size(700, 320);
+            this.dgv.TabIndex = 0;
+            // 
+            // cmbCategoria
+            // 
+            this.cmbCategoria.Dock = System.Windows.Forms.DockStyle.Top;
+            this.cmbCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCategoria.Location = new System.Drawing.Point(0, 0);
+            this.cmbCategoria.Name = "cmbCategoria";
+            this.cmbCategoria.Size = new System.Drawing.Size(700, 21);
+            this.cmbCategoria.TabIndex = 1;
+            // 
             // btnCerrar
+            // 
+            this.btnCerrar.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnCerrar.Location = new System.Drawing.Point(0, 370);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Size = new System.Drawing.Size(700, 30);
+            this.btnCerrar.TabIndex = 2;
             this.btnCerrar.Text = "Cerrar";
-            this.btnCerrar.Dock = DockStyle.Bottom;
-            this.btnCerrar.Height = 30;
-
-            // Add controls in desired order (Combo arriba, luego tabla, luego botón)
+            // 
+            // FormTablaPosiciones
+            // 
+            this.ClientSize = new System.Drawing.Size(700, 400);
             this.Controls.Add(this.dgv);
             this.Controls.Add(this.cmbCategoria);
             this.Controls.Add(this.btnCerrar);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "FormTablaPosiciones";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Tabla de Posiciones";
+            ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
+            this.ResumeLayout(false);
+
         }
 
         /// <summary>
