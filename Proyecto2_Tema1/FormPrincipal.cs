@@ -73,5 +73,10 @@ namespace Proyecto2_Tema1
                 MessageBox.Show("No se pudo abrir el enlace (era un meme, nada esencial para el trabajo): " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

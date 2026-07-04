@@ -131,11 +131,12 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(300, 522);
+            this.textBox1.Location = new System.Drawing.Point(2, 521);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(52, 20);
+            this.textBox1.Size = new System.Drawing.Size(350, 20);
             this.textBox1.TabIndex = 8;
-            this.textBox1.Text = "Beta 0.9";
+            this.textBox1.Text = "Nahuel Gustavo Flores - Bruno Araneda              |  Grupo 43 --- Beta 0.9";
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // FormPrincipal
             // 

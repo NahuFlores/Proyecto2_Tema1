@@ -38,7 +38,7 @@
             // lblTitulo
             // 
             this.lblTitulo.AutoSize = true;
-            this.lblTitulo.Location = new System.Drawing.Point(349, 28);
+            this.lblTitulo.Location = new System.Drawing.Point(263, 22);
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.Size = new System.Drawing.Size(100, 13);
             this.lblTitulo.TabIndex = 0;
@@ -49,13 +49,13 @@
             this.dgvHistorial.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvHistorial.Location = new System.Drawing.Point(12, 57);
             this.dgvHistorial.Name = "dgvHistorial";
-            this.dgvHistorial.Size = new System.Drawing.Size(776, 303);
+            this.dgvHistorial.Size = new System.Drawing.Size(645, 290);
             this.dgvHistorial.TabIndex = 1;
             // 
             // btnVerFormacion
             // 
             this.btnVerFormacion.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnVerFormacion.Location = new System.Drawing.Point(333, 384);
+            this.btnVerFormacion.Location = new System.Drawing.Point(248, 353);
             this.btnVerFormacion.Name = "btnVerFormacion";
             this.btnVerFormacion.Size = new System.Drawing.Size(138, 42);
             this.btnVerFormacion.TabIndex = 2;
@@ -67,7 +67,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(675, 399);
             this.Controls.Add(this.btnVerFormacion);
             this.Controls.Add(this.dgvHistorial);
             this.Controls.Add(this.lblTitulo);
