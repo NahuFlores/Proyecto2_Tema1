@@ -50,7 +50,7 @@ namespace Proyecto2_Tema1
 
         private void btnReporte_Click(object sender, EventArgs e)
         {
-            // SaveFileDialog permite al usuario elegir dónde guardar el archivo de reporte.
+            // SaveFileDialog: permite al usuario elegir dónde guardar el archivo de reporte.
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = "Archivos de texto|*.txt";
             sfd.FileName = "ReporteLiga.txt";
@@ -64,7 +64,14 @@ namespace Proyecto2_Tema1
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                System.Diagnostics.Process.Start("https://i.redd.it/v0785tc6c11h1.gif");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se pudo abrir el enlace (era un meme, nada esencial para el trabajo): " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
