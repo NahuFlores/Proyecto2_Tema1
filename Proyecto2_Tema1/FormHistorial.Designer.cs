@@ -73,7 +73,7 @@
             this.Controls.Add(this.lblTitulo);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormHistorial";
-            this.Text = "Form1";
+            this.Text = "Historial de partidos";
             ((System.ComponentModel.ISupportInitialize)(this.dgvHistorial)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

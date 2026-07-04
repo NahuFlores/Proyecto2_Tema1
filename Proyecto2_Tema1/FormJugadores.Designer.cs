@@ -39,6 +39,8 @@
             this.txtEdad = new System.Windows.Forms.TextBox();
             this.chkSeguro = new System.Windows.Forms.CheckBox();
             this.chkAfiliado = new System.Windows.Forms.CheckBox();
+            this.lblEquipo = new System.Windows.Forms.Label();
+            this.cboEquipos = new System.Windows.Forms.ComboBox();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.dgvJugadores = new System.Windows.Forms.DataGridView();
@@ -112,7 +114,7 @@
             // chkSeguro
             // 
             this.chkSeguro.AutoSize = true;
-            this.chkSeguro.Location = new System.Drawing.Point(15, 190);
+            this.chkSeguro.Location = new System.Drawing.Point(15, 181);
             this.chkSeguro.Name = "chkSeguro";
             this.chkSeguro.Size = new System.Drawing.Size(88, 17);
             this.chkSeguro.TabIndex = 8;
@@ -122,17 +124,35 @@
             // chkAfiliado
             // 
             this.chkAfiliado.AutoSize = true;
-            this.chkAfiliado.Location = new System.Drawing.Point(15, 213);
+            this.chkAfiliado.Location = new System.Drawing.Point(15, 204);
             this.chkAfiliado.Name = "chkAfiliado";
             this.chkAfiliado.Size = new System.Drawing.Size(83, 17);
             this.chkAfiliado.TabIndex = 9;
             this.chkAfiliado.Text = "Está afiliado";
             this.chkAfiliado.UseVisualStyleBackColor = true;
             // 
+            // lblEquipo
+            // 
+            this.lblEquipo.AutoSize = true;
+            this.lblEquipo.Location = new System.Drawing.Point(12, 235);
+            this.lblEquipo.Name = "lblEquipo";
+            this.lblEquipo.Size = new System.Drawing.Size(43, 13);
+            this.lblEquipo.TabIndex = 10;
+            this.lblEquipo.Text = "Equipo:";
+            // 
+            // cboEquipos
+            // 
+            this.cboEquipos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboEquipos.FormattingEnabled = true;
+            this.cboEquipos.Location = new System.Drawing.Point(59, 232);
+            this.cboEquipos.Name = "cboEquipos";
+            this.cboEquipos.Size = new System.Drawing.Size(121, 21);
+            this.cboEquipos.TabIndex = 11;
+            // 
             // btnAgregar
             // 
             this.btnAgregar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btnAgregar.Location = new System.Drawing.Point(15, 254);
+            this.btnAgregar.Location = new System.Drawing.Point(15, 264);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(104, 23);
             this.btnAgregar.TabIndex = 10;
@@ -143,7 +163,7 @@
             // btnEliminar
             // 
             this.btnEliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.btnEliminar.Location = new System.Drawing.Point(15, 293);
+            this.btnEliminar.Location = new System.Drawing.Point(15, 303);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(104, 23);
             this.btnEliminar.TabIndex = 11;
@@ -167,6 +187,8 @@
             this.Controls.Add(this.dgvJugadores);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnAgregar);
+            this.Controls.Add(this.cboEquipos);
+            this.Controls.Add(this.lblEquipo);
             this.Controls.Add(this.chkAfiliado);
             this.Controls.Add(this.chkSeguro);
             this.Controls.Add(this.txtEdad);
@@ -179,7 +201,8 @@
             this.Controls.Add(this.lblDni);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormJugadores";
-            this.Text = "Form1";
+            this.Text = "Gestionar jugadores";
+            this.Load += new System.EventHandler(this.FormJugadores_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvJugadores)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -201,5 +224,7 @@
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.DataGridView dgvJugadores;
+        private System.Windows.Forms.Label lblEquipo;
+        private System.Windows.Forms.ComboBox cboEquipos;
     }
 }

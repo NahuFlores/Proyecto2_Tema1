@@ -12,7 +12,6 @@ namespace Proyecto2_Tema1
             InitializeComponent();
             Load += FormTablaPosiciones_Load;
             cmbCategoria.SelectedIndexChanged += (s, e) => CargarTablaSegunSeleccion();
-            btnCerrar.Click += (s, e) => Close();
         }
 
         private void FormTablaPosiciones_Load(object sender, EventArgs e)
@@ -92,5 +91,14 @@ namespace Proyecto2_Tema1
             dgv.DataSource = dv.ToTable();
         }
 
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbCategoria_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

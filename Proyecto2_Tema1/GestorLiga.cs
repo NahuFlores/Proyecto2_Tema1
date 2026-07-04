@@ -60,9 +60,12 @@ namespace Proyecto2_Tema1
         /// <returns>Nombre generado para el equipo.</returns>
         public static string GenerarNombreEquipo(string nombreClub, Categoria categoria)
         {
+            // Aseguramos que los nombres de equipos no se repitan..
+            // Contamos todas las veces que ya existe un equipo del mismo club (independientemente de la categoría)
+            // y le asignamos una letra incremental: A, B, C..
             int contador = 0;
             foreach (Equipo e in Equipos)
-                if (e.NombreClub == nombreClub && e.Categoria == categoria)
+                if (e.NombreClub == nombreClub)
                     contador++;
             char letra = (char)('A' + contador);
             return nombreClub + " " + letra;
@@ -483,7 +486,7 @@ namespace Proyecto2_Tema1
             }
         }
 
-        // Datos de prueba precargados (con ayuda de una IA por tiempo)
+        // Datos de prueba precargados
         public static void CargarDatosPrueba()
         {
             // Datos manuales para demo con clubes de Bahía Blanca y jugadores explícitos

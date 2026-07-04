@@ -125,7 +125,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(206, 45);
             this.textBox1.TabIndex = 9;
-            this.textBox1.Text = "(Solo se puede modificar el nombre y\r\nel equipo no debe tener ningun jugador)";
+            this.textBox1.Text = "(Solo se puede modificar el nombre.\r\nEl equipo no debe tener ningun jugador)";
             // 
             // FormEquipos
             // 

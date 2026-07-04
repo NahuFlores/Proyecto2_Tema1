@@ -301,7 +301,7 @@
             this.Controls.Add(this.lblCategoria);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormPartidos";
-            this.Text = "Form1";
+            this.Text = "Registrar partidos";
             this.ResumeLayout(false);
             this.PerformLayout();
 

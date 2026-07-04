@@ -12,7 +12,6 @@ namespace Proyecto2_Tema1
         private System.ComponentModel.IContainer components = null;
         private DataGridView dgv;
         private ComboBox cmbCategoria;
-        private Button btnCerrar;
 
         /// <summary>
         /// Initialize designer controls so they are editable in Visual Studio.
@@ -22,7 +21,7 @@ namespace Proyecto2_Tema1
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormTablaPosiciones));
             this.dgv = new System.Windows.Forms.DataGridView();
             this.cmbCategoria = new System.Windows.Forms.ComboBox();
-            this.btnCerrar = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.SuspendLayout();
             // 
@@ -45,28 +44,32 @@ namespace Proyecto2_Tema1
             this.cmbCategoria.Name = "cmbCategoria";
             this.cmbCategoria.Size = new System.Drawing.Size(700, 21);
             this.cmbCategoria.TabIndex = 1;
+            this.cmbCategoria.SelectedIndexChanged += new System.EventHandler(this.cmbCategoria_SelectedIndexChanged);
             // 
-            // btnCerrar
+            // textBox1
             // 
-            this.btnCerrar.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnCerrar.Location = new System.Drawing.Point(0, 370);
-            this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(700, 30);
-            this.btnCerrar.TabIndex = 2;
-            this.btnCerrar.Text = "Cerrar";
+            this.textBox1.Location = new System.Drawing.Point(12, 353);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(398, 40);
+            this.textBox1.TabIndex = 3;
+            this.textBox1.Text = "El equipo que más puntos logre (independientemente de la categoría)\r\nganará un vi" +
+    "aje todo pago para ver el mundial.";
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // FormTablaPosiciones
             // 
-            this.ClientSize = new System.Drawing.Size(700, 400);
+            this.ClientSize = new System.Drawing.Size(700, 405);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.dgv);
             this.Controls.Add(this.cmbCategoria);
-            this.Controls.Add(this.btnCerrar);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormTablaPosiciones";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Tabla de Posiciones";
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -82,5 +85,7 @@ namespace Proyecto2_Tema1
             }
             base.Dispose(disposing);
         }
+
+        private TextBox textBox1;
     }
 }
